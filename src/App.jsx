@@ -4,9 +4,13 @@ import CustomerPage from "./pages/CustomerPage"
 import TransactionPage from "./pages/TransactionPage"
 
 
+
 function App() {
 
   return (
+    <>
+    
+
     <Router>
       <Routes>
         <Route path="/" element={<CustomerPage />}/>
@@ -14,6 +18,7 @@ function App() {
         <Route path="/transaction" element={<TransactionPage />}/>
       </Routes>
     </Router>
+    </>
   )
 }
 

@@ -1,8 +1,12 @@
 
 const TransactionPage = () => {
+  
   return (
-    <div>TransactionPage</div>
-  )
-}
+    <div>
+      <h1>Transaction Page</h1>
+      
+    </div>
+  );
+};
 
-export default TransactionPage
+export default TransactionPage;
