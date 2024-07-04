@@ -4,6 +4,8 @@ import { AiOutlineShoppingCart, AiOutlineUserAdd } from "react-icons/ai";
 import SearchIcon from "@mui/icons-material/Search";
 import { styled, alpha } from "@mui/material/styles";
 import InputBase from "@mui/material/InputBase";
+import { Typography, IconButton } from "@mui/material";
+import { Link } from "react-router-dom";
 import "./Navbar.css";
 
 const Search = styled("div")(({ theme }) => ({
@@ -48,10 +50,18 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-const Nav = () => {
+const Nav = ({ search, handleInputChange }) => {
   return (
     <nav>
-      <h1>🛒</h1>
+       <IconButton
+          component={Link}
+          to="/"
+          sx={{ color: 'inherit', marginRight: 2 }}
+        >
+          <Typography variant="h4" component="h1">
+            🛒
+          </Typography>
+        </IconButton>
       <div className="nav-container">
         <Search>
           <SearchIconWrapper>
@@ -60,6 +70,8 @@ const Nav = () => {
           <StyledInputBase
             placeholder="Search…"
             inputProps={{ "aria-label": "search" }}
+            value={search}
+            onChange={handleInputChange}
           />
         </Search>
       </div>

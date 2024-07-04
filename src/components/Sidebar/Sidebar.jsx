@@ -1,14 +1,14 @@
 import Price from "./Price/Price";
 import "./Sidebar.css";
 
-const Sidebar = () => { //{ handleChange }
+const Sidebar = ({ handleFilter }) => { 
   return (
     <>
       <section className="sidebar">
         <div className="logo-container">
           
         </div>
-        <Price handleChange="{handleChange}" />
+        <Price handleFilter={handleFilter} />
       </section>
     </>
   );

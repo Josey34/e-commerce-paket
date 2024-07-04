@@ -1,3 +1,31 @@
-html {
-    background-color: rgba(255, 255, 255, 0.317);
+.transaction-page {
+    padding: 20px;
+    margin-top: 20px;
+}
+
+.transaction-paper {
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.transaction-title {
+    margin-bottom: 16px;
+}
+
+.transaction-description {
+    margin-top: 16px;
+}
+
+.transaction-price {
+    margin-top: 16px;
+}
+
+.transaction-quantity {
+    margin-top: 16px;
+}
+
+.buy-button {
+    margin-top: 24px;
 }
