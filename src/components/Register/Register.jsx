@@ -8,8 +8,10 @@ const Register = ({ onSwitch }) => {
   const [formData, setFormData] = useState({
     email: "",
     password: "",
+    noHp: "",
     confirmPassword: "",
   });
+
   const [errors, setErrors] = useState({});
 
   const handleChange = (e) => {
@@ -26,6 +28,11 @@ const Register = ({ onSwitch }) => {
 
     if (!formData.email) {
       validationErrors.email = "Email is required!";
+      isValid = false;
+    }
+
+    if (!formData.noHp) {
+      validationErrors.noHp = "Nomor Handphone is required!";
       isValid = false;
     }
 
@@ -50,6 +57,7 @@ const Register = ({ onSwitch }) => {
           },
           body: JSON.stringify({
             email: formData.email,
+            noHp: formData.noHp,
             password: formData.password,
           }),
         });
@@ -86,6 +94,16 @@ const Register = ({ onSwitch }) => {
               onChange={handleChange}
               error={!!errors.email}
               helperText={errors.email}
+            />
+            <TextField
+              id="noHp"
+              label="Nomor Handphone"
+              variant="outlined"
+              fullWidth
+              value={formData.noHp}
+              onChange={handleChange}
+              error={!!errors.noHp}
+              helperText={errors.noHp}
             />
             <TextField
               id="password"

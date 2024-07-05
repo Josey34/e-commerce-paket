@@ -1,4 +1,4 @@
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { Typography, Container, Button, Paper, Grid, Box, Card, CardMedia, CardContent } from "@mui/material";
 import Nav from "../components/Navigation/Navbar";
@@ -7,11 +7,9 @@ const TransactionPage = () => {
   const { id } = useParams();
   const [product, setProduct] = useState(null);
   const [error, setError] = useState(null);
-  const navigate = useNavigate();
 
   const API_URL = "http://localhost:5000";
 
-  // Fetch product data
   const getProductData = async () => {
     try {
       const response = await fetch(`${API_URL}/products/${id}`);
@@ -27,7 +25,7 @@ const TransactionPage = () => {
 
   useEffect(() => {
     getProductData();
-  }, [id]);
+  });
 
   // Handle loading state
   if (error) return <div>Error: {error}</div>;
@@ -107,16 +105,16 @@ const TransactionPage = () => {
                   <strong>Harga:</strong> Rp. {price}
                 </Typography>
                 <Typography variant="body1" component="div">
-                  <strong>Jumlah:</strong> {quantity}
+                  <strong>Jumlah:</strong> 1
                 </Typography>
                 <Typography variant="body1" component="div">
-                  <strong>Subtotal:</strong> Rp. {price * quantity}
+                  <strong>Subtotal:</strong> Rp. {price * 1}
                 </Typography>
                 <Typography variant="body1" component="div">
-                  <strong>Pajak (10%):</strong> Rp. {tax.toFixed(2)}
+                  <strong>Pajak (10%):</strong> Rp. {tax}
                 </Typography>
                 <Typography variant="h6" component="div" sx={{ mt: 2 }}>
-                  <strong>Total Harga:</strong> Rp. {totalAmount.toFixed(2)}
+                  <strong>Total Harga:</strong> Rp. {totalAmount}
                 </Typography>
               </Box>
               <Button

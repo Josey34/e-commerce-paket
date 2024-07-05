@@ -79,14 +79,6 @@
       "product-quantity": 1,
       "product-available": false,
       "id": "f580"
-    },
-    {
-      "product-name": "Paket 11",
-      "product-price": 110000,
-      "product-description": "Internet murah bergengsi",
-      "product-quantity": 1,
-      "product-available": false,
-      "id": "2c53"
     }
   ],
   "users": [
@@ -96,14 +88,10 @@
       "id": "966c"
     },
     {
-      "id": "8b87",
-      "email": "josetakesan46@gmail.com",
-      "password": "password"
-    },
-    {
-      "id": "3234",
+      "id": "3a74",
       "email": "josey@gmail.com",
-      "password": "123123"
+      "noHp": "081",
+      "password": "password"
     }
   ]
 }
