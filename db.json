@@ -71,14 +71,6 @@
       "product-description": "Paket Lengkap 5G non-stop",
       "product-quantity": 9,
       "product-available": false
-    },
-    {
-      "product-name": "Paket 10",
-      "product-price": 100000,
-      "product-description": "Paket 5G non-stop",
-      "product-quantity": 1,
-      "product-available": false,
-      "id": "f580"
     }
   ],
   "users": [

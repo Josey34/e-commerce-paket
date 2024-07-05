@@ -3,16 +3,17 @@ import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";
 import TableCell, { tableCellClasses } from "@mui/material/TableCell";
 import TableContainer from "@mui/material/TableContainer";
-import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
-import { Button, Box } from "@mui/material";
+import { Button, Box, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, TableHead } from "@mui/material";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
 const Tables = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
+  const [open, setOpen] = useState(false);
+  const [selectedProductId, setSelectedProductId] = useState(null);
 
   const API_URL = "http://localhost:5000";
   const navigate = useNavigate();
@@ -57,14 +58,26 @@ const Tables = () => {
     },
   }));
 
-  const handleDelete = (id) => {
-    if (window.confirm("Apakah ingin menghapus?")) {
-      fetch("http://localhost:5000/products/" + id, {
+  const handleDelete = async (id) => {
+    try {
+      await fetch(`http://localhost:5000/products/${id}`, {
         method: "DELETE",
       });
-      alert("Berhasil Dihapus!");
-      window.location.reload();
+      setProducts(products.filter((product) => product.id !== id));
+      setOpen(false);
+    } catch (error) {
+      setError("Failed to delete the product.");
     }
+  };
+
+  const handleOpenDialog = (id) => {
+    setSelectedProductId(id);
+    setOpen(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpen(false);
+    setSelectedProductId(null);
   };
 
   return (
@@ -113,7 +126,6 @@ const Tables = () => {
                   {product["product-quantity"]}
                 </StyledTableCell>
                 <StyledTableCell align="center">
-                  
                   <Button
                     variant="contained"
                     color="primary"
@@ -125,7 +137,7 @@ const Tables = () => {
                   <Button
                     variant="contained"
                     color="error"
-                    onClick={() => handleDelete(product.id)}
+                    onClick={() => handleOpenDialog(product.id)}
                   >
                     Delete
                   </Button>
@@ -135,6 +147,32 @@ const Tables = () => {
           </TableBody>
         </Table>
       </TableContainer>
+
+      <Dialog
+        open={open}
+        onClose={handleCloseDialog}
+        aria-labelledby="alert-dialog-title"
+        aria-describedby="alert-dialog-description"
+      >
+        <DialogTitle id="alert-dialog-title">{"Confirm Delete"}</DialogTitle>
+        <DialogContent>
+          <DialogContentText id="alert-dialog-description">
+            Are you sure you want to delete this product?
+          </DialogContentText>
+        </DialogContent>
+        <DialogActions>
+          <Button onClick={handleCloseDialog} color="primary">
+            Cancel
+          </Button>
+          <Button
+            onClick={() => handleDelete(selectedProductId)}
+            color="primary"
+            autoFocus
+          >
+            Confirm
+          </Button>
+        </DialogActions>
+      </Dialog>
     </Box>
   );
 };
