@@ -73,18 +73,27 @@
       "product-available": false
     },
     {
-      "id": "f580",
       "product-name": "Paket 10",
       "product-price": 100000,
       "product-description": "Paket 5G non-stop",
       "product-quantity": 1,
-      "product-available": true
+      "product-available": false,
+      "id": "f580"
+    },
+    {
+      "product-name": "Paket 11",
+      "product-price": 110000,
+      "product-description": "Internet murah bergengsi",
+      "product-quantity": 1,
+      "product-available": false,
+      "id": "2c53"
     }
   ],
   "users": [
     {
       "email": "admin@admin.com",
-      "password": "admin"
+      "password": "admin",
+      "id": "966c"
     },
     {
       "id": "8b87",

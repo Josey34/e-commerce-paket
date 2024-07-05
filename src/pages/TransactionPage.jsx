@@ -1,6 +1,6 @@
 import { useParams, useNavigate } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { Typography, Container, Button, Paper, Grid, Box } from "@mui/material";
+import { Typography, Container, Button, Paper, Grid, Box, Card, CardMedia, CardContent } from "@mui/material";
 import Nav from "../components/Navigation/Navbar";
 
 const TransactionPage = () => {
@@ -43,49 +43,53 @@ const TransactionPage = () => {
     <div className="transaction-page">
       <Nav />
       <Container sx={{ mt: 4, mb: 4 }}>
-        <Grid container spacing={4}>
+        <Grid container spacing={4} sx={{ flexDirection: { xs: 'column', md: 'row' } }}>
           {/* Left Column: Product Details */}
           <Grid item xs={12} md={8}>
-            <Paper
-              className="transaction-paper"
-              elevation={3}
-              sx={{ padding: 4 }}
-            >
-              <Typography
-                className="transaction-title"
-                variant="h4"
-                gutterBottom
-              >
-                Detail Pesanan
-              </Typography>
-              <Typography variant="h5" component="div">
-                {product["product-name"]}
-              </Typography>
-              <Typography
-                className="transaction-description"
-                variant="body1"
-                color="text.secondary"
-                sx={{ mt: 2 }}
-              >
-                {product["product-description"]}
-              </Typography>
-              <Typography
-                className="transaction-price"
-                variant="h6"
-                component="div"
-                sx={{ mt: 2 }}
-              >
-                Harga: Rp. {product["product-price"]}
-              </Typography>
-              <Typography
-                className="transaction-quantity"
-                variant="body1"
-                component="div"
-                sx={{ mt: 2 }}
-              >
-                Tersedia: {product["product-quantity"]}
-              </Typography>
-            </Paper>
+            <Card sx={{ display: 'flex', flexDirection: { xs: 'column', md: 'row' } }}>
+              <CardMedia
+                component="img"
+                sx={{ width: { xs: '100%', md: 300 }, height: 'auto' }}
+                image="/assets/photo1.jpg"
+                alt="Product Image"
+              />
+              <CardContent>
+                <Typography
+                  className="transaction-title"
+                  variant="h4"
+                  gutterBottom
+                >
+                  Detail Pesanan
+                </Typography>
+                <Typography variant="h5" component="div">
+                  {product["product-name"]}
+                </Typography>
+                <Typography
+                  className="transaction-description"
+                  variant="body1"
+                  color="text.secondary"
+                  sx={{ mt: 2 }}
+                >
+                  {product["product-description"]}
+                </Typography>
+                <Typography
+                  className="transaction-price"
+                  variant="h6"
+                  component="div"
+                  sx={{ mt: 2 }}
+                >
+                  Harga: Rp. {product["product-price"]}
+                </Typography>
+                <Typography
+                  className="transaction-quantity"
+                  variant="body1"
+                  component="div"
+                  sx={{ mt: 2 }}
+                >
+                  Tersedia: {product["product-quantity"]}
+                </Typography>
+              </CardContent>
+            </Card>
           </Grid>
 
           {/* Right Column: Order Details */}

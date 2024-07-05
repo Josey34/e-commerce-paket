@@ -27,7 +27,7 @@ const Cards = ({ products, handleTransaction }) => {
               <CardMedia
                 component="img"
                 height="140"
-                image="https://unsplash.com/photos/a-couple-of-white-wires-connected-to-each-other-YZn4o7FsA18"
+                image="/assets/photo1.jpg"
                 alt="Gambar Paket Internet"
               />
               <CardContent>

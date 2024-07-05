@@ -52,7 +52,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Nav = ({ search, handleInputChange }) => {
   return (
-    <nav>
+    <nav className="navbar">
       <IconButton
         component={Link}
         to="/"
@@ -76,13 +76,6 @@ const Nav = ({ search, handleInputChange }) => {
         </Search>
       </div>
       <div className="profile-container">
-        <IconButton component={Link} to="/">
-          <FiHeart className="nav-icons" />
-        </IconButton>
-
-        <IconButton component={Link} to="/">
-          <AiOutlineShoppingCart className="nav-icons" />
-        </IconButton>
         <IconButton component={Link} to="/login">
           <AiOutlineUserAdd className="nav-icons" />
         </IconButton>
