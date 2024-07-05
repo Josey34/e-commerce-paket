@@ -82,7 +82,7 @@ Fitur pada halaman ini:
    ![image](https://github.com/Josey34/e-commerce-paket/assets/171219570/2b2d9068-38d6-412a-a4c3-cbfb8d4d389d)
 
 7. Delete
-  ![image](https://github.com/Josey34/e-commerce-paket/assets/171219570/3ea66ef1-7029-46d4-b4b5-e59427f21532)
+  ![image](https://github.com/Josey34/e-commerce-paket/assets/171219570/780eb147-aac5-4eeb-8bc9-55f168b67141)
 
 Data yang sudah dibuat akan masuk kedalam db.json yang ada di dalam folder
 
