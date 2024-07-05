@@ -33,7 +33,7 @@ atau
 ```bash
 yarn install
 ```
-# Menjalankan Aplikasi
+## Menjalankan Aplikasi
 
 Untuk menjalankan aplikasi, Anda perlu membuka dua terminal.
 
