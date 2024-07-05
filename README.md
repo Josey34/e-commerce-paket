@@ -1,8 +1,50 @@
-# React + Vite
+# E-Commerce Paket
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Proyek ini adalah aplikasi e-commerce sederhana yang dibangun menggunakan React, Vite, Material-UI, dan JSON-Server.
 
-Currently, two official plugins are available:
+## Fitur
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Menggunakan Vite untuk bundling dan development server.
+Menggunakan Material-UI untuk komponen antarmuka pengguna.
+JSON-Server untuk mock API dan pengelolaan data sementara.
+CRUD operasi dasar untuk produk e-commerce.
+
+## Prasyarat
+
+Sebelum memulai, pastikan Anda telah menginstal perangkat berikut:
+
+- Node.js (versi terbaru disarankan)
+- npm atau yarn
+
+## Instalasi
+
+Clone repository ini ke mesin lokal Anda:
+
+```bash
+git clone https://github.com/Josey34/e-commerce-paket.git
+cd e-commerce-paket
+
+Instal dependensi menggunakan npm atau yarn:
+bash
+npm install
+
+atau
+bash
+yarn install
+
+Menjalankan Aplikasi
+
+Untuk menjalankan aplikasi, Anda perlu membuka dua terminal.
+
+Terminal Pertama: Menjalankan JSON-Server
+
+Membuka terminal pertama dan menjalankan JSON-Server:
+bash
+npm run json-server
+
+Terminal Kedua: Menjalankan Vite Development Server
+
+Membuka terminal kedua dan menjalankan Vite development server:
+bash
+npm run dev
+```
