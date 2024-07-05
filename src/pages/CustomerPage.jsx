@@ -1,15 +1,16 @@
-import { Typography, Box } from "@mui/material";
+import { Typography, Box, Pagination } from "@mui/material";
 import { useState, useEffect } from "react";
 import Cards from "../components/CustomerPageComponents/Card";
 import Nav from "../components/Navigation/Navbar";
 import Sidebar from "../components/Sidebar/Sidebar";
 import { useNavigate } from "react-router-dom";
-import { lightBlue } from "@mui/material/colors";
 
 const CustomerPage = () => {
-  const [products, setProducts] = useState([]);
+  const [products, setProducts] = useState([])
   const [search, setSearch] = useState("")
   const [filter, setFilter] = useState(null)
+  const [currentPage, setCurrentPage] = useState(1)
+  const [productsPerPage] = useState(6)
 
   const API_URL = "http://localhost:5000";
   const navigate = useNavigate()
@@ -52,6 +53,16 @@ const CustomerPage = () => {
 
   console.log(filteredProducts);
 
+  const indexOfLastProduct = currentPage * productsPerPage;
+  const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
+  const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
+
+  const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
+
+  const handlePageChange = (event, value) => {
+    setCurrentPage(value);
+  };
+
   return (
     <>
       <Nav search={search} handleInputChange={handleInputChange}/>
@@ -61,7 +72,15 @@ const CustomerPage = () => {
           Paket Data Internet
         </Typography>
         
-        <Cards products={filteredProducts} handleTransaction={handleTransaction}/>
+        <Cards products={currentProducts} handleTransaction={handleTransaction}/>
+        <Box sx={{ display: 'flex', justifyContent: 'center', mt: 4 }}>
+          <Pagination
+            count={totalPages}
+            page={currentPage}
+            onChange={handlePageChange}
+            color="primary"
+          />
+        </Box>
       </Box>
     </>
   );

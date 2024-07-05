@@ -7,8 +7,52 @@ import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
 import Button from "@mui/material/Button";
 import Link from "@mui/material/Link";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Login = ({ onSwitch }) => {
+  const navigate = useNavigate();
+  const [formData, setFormData] = useState({
+    email: "",
+    password: "",
+  });
+  const [error, setError] = useState("");
+
+  const handleChange = (e) => {
+    setFormData({
+      ...formData,
+      [e.target.id]: e.target.value,
+    });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await fetch("http://localhost:5000/users");
+      if (!response.ok) {
+        throw new Error("Network response was not ok");
+      }
+      const users = await response.json();
+
+      const user = users.find(
+        (user) =>
+          user.email === formData.email && user.password === formData.password
+      );
+      if (user) {
+        if (user.email === "admin@admin.com" && user.password === "admin") {
+          navigate("/admin");
+        } else {
+          navigate("/");
+        }
+      } else {
+        setError("Invalid email or password");
+      }
+    } catch (error) {
+      console.error("Login error:", error);
+      setError("Failed to login. Please try again later.");
+    }
+  };
   return (
     <>
       <div className="login">
@@ -22,16 +66,31 @@ const Login = ({ onSwitch }) => {
             </Typography>
           </div>
           <div className="login-body">
-            <TextField id="outlined-basic" label="Email" variant="outlined" />
             <TextField
-              id="outlined-basic"
+              id="email"
+              label="Email"
+              variant="outlined"
+              fullWidth
+              value={formData.email}
+              onChange={handleChange}
+            />
+            <TextField
+              id="password"
               label="Password"
               variant="outlined"
+              fullWidth
+              type="password"
+              value={formData.password}
+              onChange={handleChange}
+              error={!!error}
+              helperText={error}
             />
           </div>
           <FormControlLabel control={<Checkbox />} label="Remember Me" />
           <div className="btn-link">
-            <Button variant="contained">Sign-in</Button>
+            <Button variant="contained" onClick={handleSubmit}>
+              Sign-in
+            </Button>
           </div>
           <Link onClick={onSwitch} variant="body2" className="link">
             {"Don't have an account? Sign Up"}

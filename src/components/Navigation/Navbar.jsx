@@ -53,15 +53,15 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 const Nav = ({ search, handleInputChange }) => {
   return (
     <nav>
-       <IconButton
-          component={Link}
-          to="/"
-          sx={{ color: 'inherit', marginRight: 2 }}
-        >
-          <Typography variant="h4" component="h1">
-            🛒
-          </Typography>
-        </IconButton>
+      <IconButton
+        component={Link}
+        to="/"
+        sx={{ color: "inherit", marginRight: 2 }}
+      >
+        <Typography variant="h4" component="h1">
+          🛒
+        </Typography>
+      </IconButton>
       <div className="nav-container">
         <Search>
           <SearchIconWrapper>
@@ -76,15 +76,16 @@ const Nav = ({ search, handleInputChange }) => {
         </Search>
       </div>
       <div className="profile-container">
-        <a href="#">
+        <IconButton component={Link} to="/">
           <FiHeart className="nav-icons" />
-        </a>
-        <a href="#">
+        </IconButton>
+
+        <IconButton component={Link} to="/">
           <AiOutlineShoppingCart className="nav-icons" />
-        </a>
-        <a href="#">
+        </IconButton>
+        <IconButton component={Link} to="/login">
           <AiOutlineUserAdd className="nav-icons" />
-        </a>
+        </IconButton>
       </div>
     </nav>
   );

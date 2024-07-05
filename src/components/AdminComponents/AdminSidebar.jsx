@@ -70,6 +70,7 @@ const AdminSidebar = () => {
           variant="contained"
           startIcon={<LogoutRoundedIcon />}
           sx={{ width: "80%", borderRadius: 2.5 }}
+          href="/login"
         >
           Logout
         </Button>

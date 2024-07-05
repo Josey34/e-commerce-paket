@@ -8,12 +8,14 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import { Button, Box } from "@mui/material";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 const Tables = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(null);
 
   const API_URL = "http://localhost:5000";
+  const navigate = useNavigate();
 
   const getData = async () => {
     try {
@@ -55,17 +57,36 @@ const Tables = () => {
     },
   }));
 
+  const handleDelete = (id) => {
+    if (window.confirm("Apakah ingin menghapus?")) {
+      fetch("http://localhost:5000/products/" + id, {
+        method: "DELETE",
+      });
+      alert("Berhasil Dihapus!");
+      window.location.reload();
+    }
+  };
+
   return (
-    <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-start', ml: '16px', width: '80%', mt: '24px' }}>
+    <Box
+      sx={{
+        display: "flex",
+        flexDirection: "column",
+        alignItems: "flex-start",
+        ml: "16px",
+        width: "80%",
+        mt: "24px",
+      }}
+    >
       <Button
         variant="contained"
         color="primary"
-        onClick={() => navigate('/create')}
-        sx={{ marginBottom: 2, alignSelf: 'flex-end' }}
+        onClick={() => navigate("/admin/create")}
+        sx={{ marginBottom: 2, alignSelf: "flex-end" }}
       >
         Create New Product
       </Button>
-      <TableContainer component={Paper} sx={{ width: '100%' }}>
+      <TableContainer component={Paper} sx={{ width: "100%" }}>
         <Table aria-label="customized table">
           <TableHead>
             <TableRow>
@@ -92,9 +113,22 @@ const Tables = () => {
                   {product["product-quantity"]}
                 </StyledTableCell>
                 <StyledTableCell align="center">
-                  <Button variant="contained" color="info" sx={{ mr: 2 }} onClick={() => navigate(`/details/${product.id}`)}>Details</Button>
-                  <Button variant="contained" color="primary" sx={{ mr: 2 }} onClick={() => navigate(`/edit/${product.id}`)}>Edit</Button>
-                  <Button variant="contained" color="error" onClick={() => handleDelete(product.id)}>Delete</Button>
+                  
+                  <Button
+                    variant="contained"
+                    color="primary"
+                    sx={{ mr: 2 }}
+                    onClick={() => navigate(`/admin/edit/${product.id}`)}
+                  >
+                    Edit
+                  </Button>
+                  <Button
+                    variant="contained"
+                    color="error"
+                    onClick={() => handleDelete(product.id)}
+                  >
+                    Delete
+                  </Button>
                 </StyledTableCell>
               </StyledTableRow>
             ))}
