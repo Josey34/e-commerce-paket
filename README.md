@@ -23,28 +23,30 @@ Clone repository ini ke mesin lokal Anda:
 ```bash
 git clone https://github.com/Josey34/e-commerce-paket.git
 cd e-commerce-paket
+```
 
 Instal dependensi menggunakan npm atau yarn:
-bash
+```bash
 npm install
-
+```
 atau
-bash
+```bash
 yarn install
-
-Menjalankan Aplikasi
+```
+# Menjalankan Aplikasi
 
 Untuk menjalankan aplikasi, Anda perlu membuka dua terminal.
 
 Terminal Pertama: Menjalankan JSON-Server
 
 Membuka terminal pertama dan menjalankan JSON-Server:
-bash
+```bash
 npm run json-server
+```
 
 Terminal Kedua: Menjalankan Vite Development Server
 
 Membuka terminal kedua dan menjalankan Vite development server:
-bash
+```bash
 npm run dev
 ```
